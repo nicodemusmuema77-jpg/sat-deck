@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="A distilled, interactive SAT strategy deck assembled from 5 YouTube prep channels: Penguin SAT Prep, LearnSATMath, The SAT Gamified, James Lu SAT, SuperTutorTV." />
+  <title>SAT STRATEGY DECK — assembled from 5 YouTube prep channels</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='28'>📓</text></svg>" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo">SAT/</span>
+      <span class="subtitle" id="strategyCount">— strategies from — channels</span>
+    </div>
+    <div class="controls">
+      <input id="search" type="search" placeholder="Search rules, tags, channels…" aria-label="Search" />
+      <button id="theme" type="button" aria-label="Toggle theme" title="Toggle theme">◐</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Strategy of the day -->
+    <section class="sotd" id="sotd" hidden>
+      <div class="sotd-label">STRATEGY OF THE DAY</div>
+      <div class="sotd-rule" id="sotd-rule"></div>
+      <div class="sotd-why" id="sotd-why"></div>
+      <div class="sotd-source">
+        <a id="sotd-link" target="_blank" rel="noopener">—</a>
+      </div>
+    </section>
+
+    <!-- Filters -->
+    <section class="filters">
+      <div class="filter-row">
+        <div class="filter-group">
+          <span class="filter-label">Section</span>
+          <div class="chips" id="sectionChips"></div>
+        </div>
+        <div class="filter-group">
+          <span class="filter-label">Channel</span>
+          <div class="chips" id="channelChips"></div>
+        </div>
+      </div>
+      <div class="filter-row">
+        <div class="filter-group">
+          <span class="filter-label">Sort</span>
+          <select id="sort">
+            <option value="default">Default</option>
+            <option value="section">By section</option>
+            <option value="channel">By channel</option>
+            <option value="practiced">Unpracticed first</option>
+          </select>
+        </div>
+        <div class="filter-group right">
+          <button id="export" type="button" title="Export your progress as JSON">Export</button>
+          <button id="import" type="button" title="Import progress from JSON">Import</button>
+          <input id="importFile" type="file" accept="application/json" hidden />
+          <button id="reset" type="button" title="Reset all progress">Reset</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Progress -->
+    <section class="progress">
+      <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+      <div class="progress-text" id="progressText">0 / 0 practiced (0%)</div>
+    </section>
+
+    <!-- Cards -->
+    <section class="cards" id="cards"></section>
+    <div class="empty" id="empty" hidden>No strategies match these filters.</div>
+  </main>
+
+  <footer>
+    <div>Data: yt-dlp transcripts from 5 SAT prep channels, distilled via LLM.</div>
+    <div>Sourced videos are linked on each card. Open a card, hit the YouTube link, and practice it on the next problem set you do.</div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
