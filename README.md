@@ -4,7 +4,7 @@ An interactive, single-page reference of 700+ SAT prep strategies distilled from
 
 **Channels:** Penguin SAT Prep, LearnSATMath, The SAT Gamified, James Lu SAT, SuperTutorTV.
 
-**Live at:** https://sat.nicxon.tech
+**Live at:** https://strategy.nicxon.tech
 
 ## What's in here
 
