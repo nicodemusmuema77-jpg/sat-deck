@@ -362,6 +362,19 @@ footer {
 .tool .stat b { font-weight: 700; }
 .disclaimer { font-size: 12px; color: var(--ink-3); line-height: 1.6; margin-top: 14px; }
 
+/* Responsive display ad on the tool pages */
+.tool-ad { max-width: 720px; margin: 28px auto 0; }
+.tool-ad .ad-label {
+  display: block;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  text-align: center;
+  margin-bottom: 6px;
+}
+.tool-ad ins { display: block; min-height: 100px; }
+
 /* pacing timer */
 .clock { font: 700 52px/1 "JetBrains Mono", "Fira Mono", "Menlo", monospace; letter-spacing: 0.02em; text-align: center; margin: 6px 0 14px; }
 .clock.warn { color: #c07c15; }

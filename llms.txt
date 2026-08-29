@@ -1,0 +1,23 @@
+# SAT Strategy Deck
+
+> A free, no-login reference of 719 SAT preparation strategies distilled from five
+> YouTube prep channels (Penguin SAT Prep, The SAT Gamified, James Lu SAT,
+> SuperTutorTV, LearnSATMath), plus four tools for scoring, pacing, planning, and
+> spaced-repetition review. Every strategy links to the source video and timestamp.
+
+## Pages
+
+- [SAT Strategy Deck](https://strategy.nicxon.tech/): The full deck of 719 strategies, searchable and filterable by section (Math, Reading, Writing, Test-Day, Mindset, Study-Plan) and by source channel. Supports `?q=` for a preset search.
+- [Active-recall quiz](https://strategy.nicxon.tech/quiz.html): Turns the deck into a spaced-repetition quiz using a Leitner box schedule; progress stored in the browser.
+- [Digital SAT score calculator](https://strategy.nicxon.tech/score-calculator.html): Estimates section (200-800) and composite (400-1600) scores from the number of questions answered correctly on a practice test. Output is an approximation; the College Board publishes no official raw-to-scaled table.
+- [Digital SAT pacing timer](https://strategy.nicxon.tech/pacing-timer.html): Single-module countdown (Reading & Writing: 32 min / 27 questions; Math: 35 min / 22 questions) with per-question pace guidance.
+- [Study-plan generator](https://strategy.nicxon.tech/study-plan.html): Builds a week-by-week plan from a test date, target score, and weekly study hours, drawing specific strategies from the deck for each week.
+- [About](https://strategy.nicxon.tech/about.html): How the strategies are sourced, extracted, and deduplicated.
+- [Contact](https://strategy.nicxon.tech/contact.html): How to report a wrong strategy or a bug.
+- [Privacy Policy](https://strategy.nicxon.tech/privacy.html): Local-storage usage and Google AdSense advertising disclosures.
+
+## Notes
+
+- Not affiliated with, endorsed by, or connected to the College Board. SAT is a trademark registered by the College Board.
+- The site has no accounts and no analytics. Quiz progress, study-plan inputs, and theme choice are stored only in the visitor's browser.
+- Strategy text is summarized from public YouTube videos; source attribution is on every card.
