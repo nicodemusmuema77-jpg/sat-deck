@@ -241,10 +241,10 @@
   }
 
   // ----- Ads (AdSense in-feed) -----
-  // Create the in-feed unit in AdSense, then paste its two values here.
+  // In-feed unit "deck-in-feed" (ca-pub-5866794555885279).
   const AD_CLIENT     = "ca-pub-5866794555885279";
-  const AD_SLOT       = "REPLACE_ME";   // in-feed unit id
-  const AD_LAYOUT_KEY = "REPLACE_ME";   // data-ad-layout-key from the same unit
+  const AD_SLOT       = "2710994591";        // in-feed unit id
+  const AD_LAYOUT_KEY = "-6t+ed+2i-1n-4w";   // data-ad-layout-key from the same unit
   const AD_AFTER = 4;   // first ad after this many cards
   const AD_EVERY = 5;   // then one ad every N cards, all the way down (no cap)
   const AD_READY = AD_SLOT !== "REPLACE_ME" && AD_LAYOUT_KEY !== "REPLACE_ME";
