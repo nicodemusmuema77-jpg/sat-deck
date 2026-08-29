@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Generate a week-by-week Digital SAT study plan from your test date, target score, and weekly hours, with specific strategies pulled from the deck for each week." />
+  <link rel="canonical" href="https://strategy.nicxon.tech/study-plan.html" />
+  <title>SAT Study Plan Generator — SAT Strategy Deck</title>
+  <script src="theme.js"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5866794555885279" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='28'>📓</text></svg>" />
+</head>
+<body>
+  <nav class="sitenav">
+    <a href="/" class="sitenav-brand">SAT/</a>
+    <div class="sitenav-links">
+      <a href="/">Deck</a>
+      <a href="/quiz.html">Quiz</a>
+      <a href="/score-calculator.html">Score&nbsp;calc</a>
+      <a href="/pacing-timer.html">Pacing&nbsp;timer</a>
+      <a href="/study-plan.html" class="active">Study&nbsp;plan</a>
+      <a href="/about.html">About</a>
+      <a href="/contact.html">Contact</a>
+    </div>
+    <button id="theme" class="theme-btn" type="button" aria-label="Toggle theme" title="Toggle theme">◐</button>
+  </nav>
+
+  <main class="tool">
+    <h1>Study plan generator</h1>
+    <p class="intro">
+      Enter your test date, a target score, and how many hours a week you can study.
+      You get a week-by-week plan with specific strategies from the deck to work through
+      each week. Print it or come back to it any time.
+    </p>
+
+    <div class="tool-panel no-print">
+      <div class="row">
+        <div class="field">
+          <label for="date">Test date</label>
+          <input id="date" type="date" />
+        </div>
+        <div class="field">
+          <label for="target">Target composite</label>
+          <input id="target" type="number" min="400" max="1600" step="10" inputmode="numeric" placeholder="e.g. 1400" />
+        </div>
+        <div class="field">
+          <label for="hours">Hours per week</label>
+          <input id="hours" type="number" min="1" max="40" step="1" inputmode="numeric" value="6" />
+        </div>
+      </div>
+      <div class="btns">
+        <button id="make" class="primary" type="button">Build plan</button>
+        <button id="print" type="button" hidden>Print plan</button>
+      </div>
+      <p class="disclaimer" id="err" hidden></p>
+    </div>
+
+    <div id="plan"></div>
+
+    <p class="disclaimer">
+      The plan spreads the official content areas across the weeks you have left, front-loading
+      concepts and shifting to timed practice near the end. Strategy picks are drawn from the
+      719-card deck and link to their source videos. It is a starting structure, not a
+      guarantee of any score.
+    </p>
+  </main>
+
+  <footer>
+    <div><a href="/about.html">About</a> · <a href="/contact.html">Contact</a> · <a href="/privacy.html">Privacy</a></div>
+    <div>SAT® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</div>
+  </footer>
+
+  <script src="study-plan.js"></script>
+</body>
+</html>
