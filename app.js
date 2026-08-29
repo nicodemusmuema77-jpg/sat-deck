@@ -245,9 +245,8 @@
   const AD_CLIENT     = "ca-pub-5866794555885279";
   const AD_SLOT       = "REPLACE_ME";   // in-feed unit id
   const AD_LAYOUT_KEY = "REPLACE_ME";   // data-ad-layout-key from the same unit
-  const AD_AFTER = 8;   // no ad before this many cards (keeps the first screen clean)
-  const AD_EVERY = 12;  // then at most one ad every N cards
-  const AD_MAX   = 4;   // hard cap of ad slots per render — nothing after ~card 45
+  const AD_AFTER = 4;   // first ad after this many cards
+  const AD_EVERY = 5;   // then one ad every N cards, all the way down (no cap)
   const AD_READY = AD_SLOT !== "REPLACE_ME" && AD_LAYOUT_KEY !== "REPLACE_ME";
 
   let adObserver = null;
@@ -299,6 +298,11 @@
     try {
       (window.adsbygoogle = window.adsbygoogle || []).push({});
       adsFilled++;
+      // At this density most slots will not fill; collapse the empty ones so the
+      // deck is not a field of blank boxes.
+      setTimeout(() => {
+        if (ins.dataset.adStatus === "unfilled" || !ins.firstChild) slot.remove();
+      }, 3000);
     } catch (_) {
       slot.remove(); // blocker or script never loaded — drop the gap
     }
@@ -329,7 +333,7 @@
     const frag = document.createDocumentFragment();
     state.visible.forEach((s, i) => {
       frag.appendChild(makeCard(s));
-      if (showAds && placed < AD_MAX && i >= AD_AFTER && (i - AD_AFTER) % AD_EVERY === 0) {
+      if (showAds && i >= AD_AFTER && (i - AD_AFTER) % AD_EVERY === 0) {
         frag.appendChild(makeAdSlot());
         placed++;
       }
