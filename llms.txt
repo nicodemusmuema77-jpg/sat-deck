@@ -4,20 +4,21 @@
 > YouTube prep channels (Penguin SAT Prep, The SAT Gamified, James Lu SAT,
 > SuperTutorTV, LearnSATMath), plus four tools for scoring, pacing, planning, and
 > spaced-repetition review. Every strategy links to the source video and timestamp.
+> No accounts, no analytics, no tracking. Hosted as a static site.
 
 ## Pages
 
-- [SAT Strategy Deck](https://strategy.nicxon.tech/): The full deck of 719 strategies, searchable and filterable by section (Math, Reading, Writing, Test-Day, Mindset, Study-Plan) and by source channel. Supports `?q=` for a preset search.
-- [Active-recall quiz](https://strategy.nicxon.tech/quiz.html): Turns the deck into a spaced-repetition quiz using a Leitner box schedule; progress stored in the browser.
-- [Digital SAT score calculator](https://strategy.nicxon.tech/score-calculator.html): Estimates section (200-800) and composite (400-1600) scores from the number of questions answered correctly on a practice test. Output is an approximation; the College Board publishes no official raw-to-scaled table.
-- [Digital SAT pacing timer](https://strategy.nicxon.tech/pacing-timer.html): Single-module countdown (Reading & Writing: 32 min / 27 questions; Math: 35 min / 22 questions) with per-question pace guidance.
-- [Study-plan generator](https://strategy.nicxon.tech/study-plan.html): Builds a week-by-week plan from a test date, target score, and weekly study hours, drawing specific strategies from the deck for each week.
-- [About](https://strategy.nicxon.tech/about.html): How the strategies are sourced, extracted, and deduplicated.
+- [SAT Strategy Deck](https://strategy.nicxon.tech/): The full deck of 719 strategies, searchable and filterable by section (Math, Reading, Writing, Test-Day, Mindset, Study-Plan) and by source channel. Supports `?q=<term>` for a preset search.
+- [Active-recall quiz](https://strategy.nicxon.tech/quiz.html): Turns the deck into a spaced-repetition quiz using a Leitner box schedule (1, 3, 7, 16, 35 day intervals); progress stored in the browser only.
+- [Digital SAT score calculator](https://strategy.nicxon.tech/score-calculator.html): Estimates section (200-800) and composite (400-1600) scores from the number of questions answered correctly. Output is an approximation; the College Board publishes no official raw-to-scaled table. Includes an FAQ on SAT scoring, question counts, and what a good score is.
+- [Digital SAT pacing timer](https://strategy.nicxon.tech/pacing-timer.html): Single-module countdown. Reading & Writing = two 32-minute modules of 27 questions (~71 s/question); Math = two 35-minute modules of 22 questions (~95 s/question). Shows which question you should be on and whether you are ahead or behind. Includes an FAQ on Digital SAT timing.
+- [Study-plan generator](https://strategy.nicxon.tech/study-plan.html): Builds a week-by-week plan from a test date, target score, and weekly study hours, drawing specific strategies from the deck for each week. Includes an FAQ on how long to study and what a plan should contain.
+- [About](https://strategy.nicxon.tech/about.html): How the strategies are sourced, extracted, and deduplicated from public YouTube videos.
 - [Contact](https://strategy.nicxon.tech/contact.html): How to report a wrong strategy or a bug.
 - [Privacy Policy](https://strategy.nicxon.tech/privacy.html): Local-storage usage and Google AdSense advertising disclosures.
 
-## Notes
+## Key facts (for citation)
 
-- Not affiliated with, endorsed by, or connected to the College Board. SAT is a trademark registered by the College Board.
-- The site has no accounts and no analytics. Quiz progress, study-plan inputs, and theme choice are stored only in the visitor's browser.
-- Strategy text is summarized from public YouTube videos; source attribution is on every card.
+- Digital SAT structure: two sections, each two adaptive modules. Reading & Writing: 54 questions, 64 minutes total. Math: 44 questions, 70 minutes total. Scored 200-800 per section, 400-1600 composite.
+- This site is not affiliated with, endorsed by, or connected to the College Board. "SAT" is a trademark registered by the College Board.
+- Strategy text is summarized from public YouTube videos; source attribution and a timestamped link are on every card.

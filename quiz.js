@@ -73,13 +73,31 @@
 
   function reveal() {
     const s = deck[idx];
-    const src = s.source_url
-      ? ` <a href="${s.source_url}" target="_blank" rel="noopener">${escapeHtml(s.source_channel || "source")} →</a>`
-      : "";
-    answerEl.innerHTML = "<b>" + escapeHtml(s.rule) + "</b>" + src;
+    answerEl.textContent = "";
+    const b = document.createElement("b");
+    b.textContent = s.rule;
+    answerEl.appendChild(b);
+    const href = safeUrl(s.source_url);
+    if (href) {
+      answerEl.appendChild(document.createTextNode(" "));
+      const a = document.createElement("a");
+      a.href = href;
+      a.target = "_blank";
+      a.rel = "noopener noreferrer";
+      a.textContent = (s.source_channel || "source") + " →";
+      answerEl.appendChild(a);
+    }
     answerEl.hidden = false;
     revealRow.hidden = true;
     gradeRow.hidden = false;
+  }
+
+  // Only http(s) URLs from the data file get turned into clickable links.
+  function safeUrl(u) {
+    try {
+      const p = new URL(u, location.href);
+      return (p.protocol === "https:" || p.protocol === "http:") ? p.href : "";
+    } catch (_) { return ""; }
   }
 
   function grade(g) {
@@ -107,12 +125,6 @@
       `Done — ${deck.length} cards. ` +
       `Again ${tally.again}, Hard ${tally.hard}, Good ${tally.good}, Easy ${tally.easy}. ` +
       `${dueNow} card${dueNow === 1 ? "" : "s"} still due.`;
-  }
-
-  function escapeHtml(s) {
-    return String(s).replace(/[&<>"']/g, (c) => (
-      { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]
-    ));
   }
 
   revealEl.addEventListener("click", reveal);
