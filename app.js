@@ -240,23 +240,106 @@
     }
   }
 
+  // ----- Ads (AdSense in-feed) -----
+  // Create the in-feed unit in AdSense, then paste its two values here.
+  const AD_CLIENT     = "ca-pub-5866794555885279";
+  const AD_SLOT       = "REPLACE_ME";   // in-feed unit id
+  const AD_LAYOUT_KEY = "REPLACE_ME";   // data-ad-layout-key from the same unit
+  const AD_AFTER = 8;   // no ad before this many cards (keeps the first screen clean)
+  const AD_EVERY = 12;  // then at most one ad every N cards
+  const AD_MAX   = 4;   // hard cap of ad slots per render — nothing after ~card 45
+  const AD_READY = AD_SLOT !== "REPLACE_ME" && AD_LAYOUT_KEY !== "REPLACE_ME";
+
+  let adObserver = null;
+  let adsFilled = 0;
+
+  function resetAds() {
+    if (adObserver) adObserver.disconnect();
+    adObserver = null;
+    adsFilled = 0;
+  }
+
+  // Ads are noise while the reader is hunting for a specific card, and every
+  // keystroke re-renders the list and throws the slots away. Only show them on
+  // the full, unfiltered deck.
+  function adsAllowed() {
+    return AD_READY
+      && !state.query
+      && state.activeSections.size === 0
+      && state.activeChannels.size === 0;
+  }
+
+  function makeAdSlot() {
+    const wrap = document.createElement("div");
+    wrap.className = "ad-slot";
+    const label = document.createElement("span");
+    label.className = "ad-label";
+    label.textContent = "Advertisement";
+    const target = document.createElement("div");
+    target.className = "ad-target";
+    wrap.appendChild(label);
+    wrap.appendChild(target);
+    return wrap;
+  }
+
+  function fillAdSlot(slot) {
+    const target = slot.querySelector(".ad-target");
+    if (!target || target.firstChild) return;
+    // The <ins> is created here, not at render time: adsbygoogle.push() binds to
+    // the first empty <ins> in DOM order, so pre-rendering every slot's <ins>
+    // would fill the top of the list instead of the slot scrolled into view.
+    const ins = document.createElement("ins");
+    ins.className = "adsbygoogle";
+    ins.style.display = "block";
+    ins.dataset.adClient = AD_CLIENT;
+    ins.dataset.adSlot = AD_SLOT;
+    ins.dataset.adFormat = "fluid";
+    ins.dataset.adLayoutKey = AD_LAYOUT_KEY;
+    target.appendChild(ins);
+    try {
+      (window.adsbygoogle = window.adsbygoogle || []).push({});
+      adsFilled++;
+    } catch (_) {
+      slot.remove(); // blocker or script never loaded — drop the gap
+    }
+  }
+
+  function onAdVisible(entries) {
+    for (const entry of entries) {
+      if (!entry.isIntersecting) continue;
+      adObserver.unobserve(entry.target);
+      fillAdSlot(entry.target);
+    }
+  }
+
   // ----- Render -----
   function renderCards() {
     const root = document.getElementById("cards");
     const empty = document.getElementById("empty");
+    resetAds();
     if (!state.visible.length) {
       root.innerHTML = "";
       empty.hidden = false;
       return;
     }
     empty.hidden = true;
+    const showAds = adsAllowed();
+    let placed = 0;
     // Use a DocumentFragment for batch insertion
     const frag = document.createDocumentFragment();
-    for (const s of state.visible) {
+    state.visible.forEach((s, i) => {
       frag.appendChild(makeCard(s));
-    }
+      if (showAds && placed < AD_MAX && i >= AD_AFTER && (i - AD_AFTER) % AD_EVERY === 0) {
+        frag.appendChild(makeAdSlot());
+        placed++;
+      }
+    });
     root.innerHTML = "";
     root.appendChild(frag);
+    if (placed) {
+      adObserver = new IntersectionObserver(onAdVisible, { rootMargin: "600px 0px" });
+      root.querySelectorAll(".ad-slot").forEach((el) => adObserver.observe(el));
+    }
   }
   function makeCard(s) {
     const id = strategyId(s);

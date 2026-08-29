@@ -1,4 +1,3 @@
-google.com, pub-0000000000000000, DIRECT, f08c47fec0942fa0
-# Replace pub-0000000000000000 above with your real AdSense publisher ID.
-# Find it in AdSense -> Account -> Settings -> Account information -> Publisher ID.
-# The trailing f08c47fec0942fa0 is Google's fixed certification-authority ID; leave it as-is.
+google.com, pub-5866794555885279, DIRECT, f08c47fec0942fa0
+# Also serve this same line at https://nicxon.tech/ads.txt (Hostinger).
+# For a site on a subdomain, Google treats the root domain's ads.txt as authoritative.
