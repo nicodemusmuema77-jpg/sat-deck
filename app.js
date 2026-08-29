@@ -25,6 +25,15 @@
     return `${s.source_channel}::${s.source_video_id}::${s.rule.toLowerCase()}`;
   }
 
+  // Only ever hand http(s) URLs to an <a href>. Blocks javascript:/data: and
+  // anything malformed from the data file being turned into a clickable link.
+  function safeUrl(u) {
+    try {
+      const parsed = new URL(u, location.href);
+      return (parsed.protocol === "https:" || parsed.protocol === "http:") ? parsed.href : "";
+    } catch (_) { return ""; }
+  }
+
   // ----- Boot -----
   document.addEventListener("DOMContentLoaded", boot);
 
@@ -43,8 +52,12 @@
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       state.all = await res.json();
     } catch (e) {
-      document.getElementById("cards").innerHTML =
-        `<div class="empty">Failed to load strategies.json: ${e.message}</div>`;
+      const empty = document.createElement("div");
+      empty.className = "empty";
+      empty.textContent = "Failed to load strategies.json: " + e.message;
+      const root = document.getElementById("cards");
+      root.textContent = "";
+      root.appendChild(empty);
       return;
     }
     indexFacets();
@@ -186,7 +199,8 @@
     document.getElementById("sotd-rule").textContent = s.rule;
     document.getElementById("sotd-why").textContent = s.why || "";
     const link = document.getElementById("sotd-link");
-    link.href = s.source_url;
+    const href = safeUrl(s.source_url);
+    if (href) { link.href = href; link.hidden = false; } else { link.removeAttribute("href"); link.hidden = true; }
     link.textContent = `${s.source_channel} — ${s.source_title}` + (s.source_timestamp_sec ? ` (at ${formatTime(s.source_timestamp_sec)})` : "");
   }
 
@@ -415,14 +429,17 @@
     ch.className = "channel";
     ch.textContent = s.source_channel;
     source.appendChild(ch);
-    const link = document.createElement("a");
-    link.href = s.source_url;
-    link.target = "_blank";
-    link.rel = "noopener";
+    const href = safeUrl(s.source_url);
     const ts = s.source_timestamp_sec ? ` @ ${formatTime(s.source_timestamp_sec)}` : "";
-    link.textContent = `Source${ts} →`;
-    link.title = s.source_title;
-    source.appendChild(link);
+    if (href) {
+      const link = document.createElement("a");
+      link.href = href;
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+      link.textContent = `Source${ts} →`;
+      link.title = s.source_title || "";
+      source.appendChild(link);
+    }
     card.appendChild(source);
 
     return card;

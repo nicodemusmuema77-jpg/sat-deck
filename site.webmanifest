@@ -1,0 +1,17 @@
+{
+  "name": "SAT Strategy Deck",
+  "short_name": "SAT Deck",
+  "description": "719 SAT prep strategies from 5 YouTube channels, plus a quiz, score calculator, pacing timer and study-plan generator.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f7f5f0",
+  "theme_color": "#b4121b",
+  "lang": "en",
+  "categories": ["education", "productivity"],
+  "icons": [
+    { "src": "/logo.svg", "type": "image/svg+xml", "sizes": "any", "purpose": "any" },
+    { "src": "/apple-touch-icon.png", "type": "image/png", "sizes": "180x180" },
+    { "src": "/favicon-32.png", "type": "image/png", "sizes": "32x32" }
+  ]
+}

@@ -104,30 +104,58 @@
 
   function render(model) {
     const { weeks, days, target, hours, plan } = model;
+    const touchPoints = plan.reduce((n, w) => n + w.strategies.length, 0);
+
     const head = document.createElement("div");
     head.className = "plan-week";
-    head.innerHTML =
-      `<div class="focus">Overview</div>` +
-      `<h3>${weeks} week${weeks > 1 ? "s" : ""} until test day (${days} days)</h3>` +
-      `<div class="task">${hours} h/week` +
-      (target ? ` · target ${target}` : "") +
-      ` · ${plan.reduce((n, w) => n + w.strategies.length, 0)} strategy touch-points</div>`;
+    const hFocus = document.createElement("div");
+    hFocus.className = "focus";
+    hFocus.textContent = "Overview";
+    const hTitle = document.createElement("h3");
+    hTitle.textContent = `${weeks} week${weeks > 1 ? "s" : ""} until test day (${days} days)`;
+    const hTask = document.createElement("div");
+    hTask.className = "task";
+    hTask.textContent = `${hours} h/week` + (target ? ` · target ${target}` : "") +
+      ` · ${touchPoints} strategy touch-points`;
+    head.append(hFocus, hTitle, hTask);
 
-    planEl.innerHTML = "";
+    planEl.textContent = "";
     planEl.appendChild(head);
 
     plan.forEach((wk) => {
       const el = document.createElement("div");
       el.className = "plan-week";
-      const items = wk.strategies.map((s) => {
-        const rule = s.rule.length > 130 ? s.rule.slice(0, 127) + "…" : s.rule;
-        const href = s.source_url ? ` <a href="${s.source_url}" target="_blank" rel="noopener">source →</a>` : "";
-        return `<li><span>${escapeHtml(rule)}</span>${href}</li>`;
-      }).join("");
-      el.innerHTML =
-        `<div class="focus">Week ${wk.week} · ${escapeHtml(wk.focus)}</div>` +
-        `<ul>${items}</ul>` +
-        `<div class="task">${escapeHtml(wk.task)}</div>`;
+
+      const focusEl = document.createElement("div");
+      focusEl.className = "focus";
+      focusEl.textContent = `Week ${wk.week} · ${wk.focus}`;
+      el.appendChild(focusEl);
+
+      const ul = document.createElement("ul");
+      wk.strategies.forEach((s) => {
+        const li = document.createElement("li");
+        const span = document.createElement("span");
+        span.textContent = s.rule.length > 130 ? s.rule.slice(0, 127) + "…" : s.rule;
+        li.appendChild(span);
+        const href = safeUrl(s.source_url);
+        if (href) {
+          li.appendChild(document.createTextNode(" "));
+          const a = document.createElement("a");
+          a.href = href;
+          a.target = "_blank";
+          a.rel = "noopener noreferrer";
+          a.textContent = "source →";
+          li.appendChild(a);
+        }
+        ul.appendChild(li);
+      });
+      el.appendChild(ul);
+
+      const taskEl = document.createElement("div");
+      taskEl.className = "task";
+      taskEl.textContent = wk.task;
+      el.appendChild(taskEl);
+
       planEl.appendChild(el);
     });
 
@@ -135,10 +163,12 @@
     planEl.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 
-  function escapeHtml(s) {
-    return String(s).replace(/[&<>"']/g, (c) => (
-      { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]
-    ));
+  // Only http(s) URLs from the data file get turned into clickable links.
+  function safeUrl(u) {
+    try {
+      const p = new URL(u, location.href);
+      return (p.protocol === "https:" || p.protocol === "http:") ? p.href : "";
+    } catch (_) { return ""; }
   }
 
   function restore() {
