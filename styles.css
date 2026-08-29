@@ -80,7 +80,6 @@ input:focus, select:focus { outline: 2px solid var(--accent-soft); border-color:
   padding: 18px 24px;
   border-bottom: 1px solid var(--line);
   background: var(--surface);
-  position: sticky; top: 0; z-index: 10;
 }
 .brand { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
 .logo {
@@ -306,6 +305,94 @@ footer {
   padding-top: 16px;
 }
 
+/* ---- Site nav (every page) ---- */
+.sitenav {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  padding: 9px 24px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--line);
+  position: sticky; top: 0; z-index: 20;
+}
+.sitenav-brand {
+  font: 700 18px/1 "JetBrains Mono", "Fira Mono", "Menlo", monospace;
+  letter-spacing: 0.04em;
+  color: var(--accent);
+  text-decoration: none;
+}
+.sitenav-links { display: flex; gap: 14px; flex-wrap: wrap; flex: 1; }
+.sitenav-links a { font-size: 13px; color: var(--ink-2); text-decoration: none; }
+.sitenav-links a:hover { color: var(--accent); }
+.sitenav-links a.active { color: var(--accent); font-weight: 600; }
+.sitenav .theme-btn { width: 34px; padding: 6px 0; }
+
+/* ---- Generic content page (about, contact) ---- */
+.page { max-width: 780px; margin: 0 auto; padding: 30px 24px 56px; }
+.page h1 { font-size: 1.7rem; margin: 0 0 6px; }
+.page h2 { font-size: 1.15rem; margin: 30px 0 8px; }
+.page p, .page li { color: var(--ink-2); line-height: 1.65; }
+.page a { color: var(--accent); }
+.page code { background: var(--surface-2); padding: 1px 5px; border-radius: 4px; font-size: 0.9em; }
+.page .lead { font-size: 1.05rem; color: var(--ink); }
+
+/* ---- Tool pages ---- */
+.tool { max-width: 720px; margin: 0 auto; padding: 30px 24px 56px; }
+.tool > h1 { font-size: 1.6rem; margin: 0 0 4px; }
+.tool > .intro { color: var(--ink-2); line-height: 1.6; margin: 0 0 20px; }
+.tool-panel {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 20px;
+  margin-bottom: 18px;
+}
+.tool .field { margin-bottom: 14px; }
+.tool label { display: block; font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-3); margin-bottom: 6px; }
+.tool input[type=number], .tool input[type=date], .tool select { width: 100%; }
+.tool .row { display: flex; gap: 16px; flex-wrap: wrap; }
+.tool .row > .field { flex: 1; min-width: 150px; }
+.tool .btns { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 4px; }
+.tool .out { margin-top: 4px; }
+.tool .big { font-size: 34px; font-weight: 700; color: var(--accent); line-height: 1.1; }
+.tool .stat { display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px dashed var(--line); font-size: 14px; }
+.tool .stat:last-child { border-bottom: 0; }
+.tool .stat b { font-weight: 700; }
+.disclaimer { font-size: 12px; color: var(--ink-3); line-height: 1.6; margin-top: 14px; }
+
+/* pacing timer */
+.clock { font: 700 52px/1 "JetBrains Mono", "Fira Mono", "Menlo", monospace; letter-spacing: 0.02em; text-align: center; margin: 6px 0 14px; }
+.clock.warn { color: #c07c15; }
+.clock.danger { color: var(--accent); }
+.pace-line { display: flex; justify-content: space-between; font-size: 14px; padding: 6px 0; }
+.pace-status { text-align: center; font-weight: 600; margin-top: 8px; min-height: 1.4em; }
+.pace-status.ahead { color: var(--good); }
+.pace-status.behind { color: var(--accent); }
+.track { height: 8px; background: var(--surface-2); border-radius: 999px; overflow: hidden; margin-top: 12px; }
+.track > div { height: 100%; background: var(--good); width: 0; transition: width 0.25s ease; }
+
+/* study plan + quiz output */
+.plan-week { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px; margin-bottom: 12px; }
+.plan-week h3 { margin: 0 0 4px; font-size: 14px; }
+.plan-week .focus { font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--accent); font-weight: 700; }
+.plan-week ul { margin: 8px 0 0; padding-left: 1.2em; }
+.plan-week li { font-size: 13px; line-height: 1.55; margin: 4px 0; }
+.plan-week .task { font-size: 13px; color: var(--ink-2); margin-top: 8px; }
+
+.quiz-prompt { font-size: 17px; line-height: 1.5; margin: 10px 0; }
+.quiz-meta { font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--accent); font-weight: 700; }
+.quiz-answer { background: var(--surface-2); border-radius: var(--radius); padding: 12px 14px; margin: 12px 0; font-size: 15px; line-height: 1.5; }
+.quiz-grade { display: flex; gap: 8px; flex-wrap: wrap; }
+.quiz-grade button { flex: 1; min-width: 70px; }
+.quiz-progress { font-size: 12px; color: var(--ink-3); margin-bottom: 10px; }
+
+@media print {
+  .sitenav, footer, .no-print { display: none !important; }
+  .plan-week { break-inside: avoid; }
+}
+
 /* Mobile */
 @media (max-width: 700px) {
   .topbar { flex-wrap: wrap; padding: 14px 16px; }
@@ -316,4 +403,6 @@ footer {
   .sotd-rule { font-size: 18px; }
   .filter-group.right { width: 100%; margin-left: 0; }
   .ad-slot { min-height: 300px; }
+  .sitenav { padding: 9px 16px; gap: 12px; }
+  .clock { font-size: 44px; }
 }

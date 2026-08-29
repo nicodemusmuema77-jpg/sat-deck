@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Estimate your Digital SAT section and composite scores from the number of questions you got right in Reading & Writing and Math." />
+  <link rel="canonical" href="https://strategy.nicxon.tech/score-calculator.html" />
+  <title>Digital SAT Score Calculator (estimate) — SAT Strategy Deck</title>
+  <script src="theme.js"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5866794555885279" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='28'>📓</text></svg>" />
+</head>
+<body>
+  <nav class="sitenav">
+    <a href="/" class="sitenav-brand">SAT/</a>
+    <div class="sitenav-links">
+      <a href="/">Deck</a>
+      <a href="/quiz.html">Quiz</a>
+      <a href="/score-calculator.html" class="active">Score&nbsp;calc</a>
+      <a href="/pacing-timer.html">Pacing&nbsp;timer</a>
+      <a href="/study-plan.html">Study&nbsp;plan</a>
+      <a href="/about.html">About</a>
+      <a href="/contact.html">Contact</a>
+    </div>
+    <button id="theme" class="theme-btn" type="button" aria-label="Toggle theme" title="Toggle theme">◐</button>
+  </nav>
+
+  <main class="tool">
+    <h1>Digital SAT score calculator</h1>
+    <p class="intro">
+      Enter how many questions you answered correctly on a full-length practice test.
+      You get an estimated score for each section (200–800) and the composite (400–1600).
+    </p>
+
+    <div class="tool-panel">
+      <div class="row">
+        <div class="field">
+          <label for="rw">Reading &amp; Writing correct (of 54)</label>
+          <input id="rw" type="number" min="0" max="54" step="1" inputmode="numeric" placeholder="0–54" />
+        </div>
+        <div class="field">
+          <label for="math">Math correct (of 44)</label>
+          <input id="math" type="number" min="0" max="44" step="1" inputmode="numeric" placeholder="0–44" />
+        </div>
+      </div>
+      <div class="field">
+        <label for="target">Target composite (optional)</label>
+        <input id="target" type="number" min="400" max="1600" step="10" inputmode="numeric" placeholder="e.g. 1400" />
+      </div>
+    </div>
+
+    <div class="tool-panel out" id="out" hidden>
+      <div class="stat"><span>Reading &amp; Writing</span><b id="rwScore">—</b></div>
+      <div class="stat"><span>Math</span><b id="mathScore">—</b></div>
+      <div class="stat"><span>Composite</span><b class="big" id="total">—</b></div>
+      <div class="stat" id="gapRow" hidden><span id="gapLabel">To target</span><b id="gap">—</b></div>
+    </div>
+
+    <p class="disclaimer">
+      <strong>This is an estimate, not an official score.</strong> The College Board does not
+      publish a single raw-to-scaled conversion table for the Digital SAT. Real scaling
+      changes with each test form, and the adaptive second module means two students with
+      the same number correct can receive different scores. Use this for rough tracking
+      between practice tests, not as a prediction of test day.
+    </p>
+  </main>
+
+  <footer>
+    <div><a href="/about.html">About</a> · <a href="/contact.html">Contact</a> · <a href="/privacy.html">Privacy</a></div>
+    <div>SAT® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</div>
+  </footer>
+
+  <script src="score-calc.js"></script>
+</body>
+</html>
