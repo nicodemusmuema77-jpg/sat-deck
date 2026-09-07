@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="A Digital SAT module timer with per-question pace guidance: tells you which question you should be on and whether you are ahead or behind." />
+  <meta name="description" content="Free Digital SAT pacing timer with official module lengths, per-question pace, checkpoints, and clear guidance for practice versus test day." />
   <link rel="canonical" href="https://strategy.nicxon.tech/pacing-timer.html" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="SAT Strategy Deck" />
@@ -111,10 +111,11 @@
   <main class="tool">
     <h1>Digital SAT pacing timer</h1>
     <p class="intro">
-      Run this alongside a practice module. Tell it which question you are on and it
-      shows the question you should be on to finish in time, and whether you are ahead
-      or behind pace.
+      Practice one Digital SAT module at standard timing. Enter the question you are on
+      to compare your progress with an even pace. Reading and Writing allows 32 minutes
+      for 27 questions; Math allows 35 minutes for 22 questions.
     </p>
+    <aside class="notice"><strong>For practice only.</strong> On the real SAT, Bluebook runs the official timer and controls when each module ends. Do not open or use this page during an official test.</aside>
 
     <div class="tool-panel">
       <div class="field">
@@ -135,6 +136,29 @@
       </div>
     </div>
 
+    <section class="guide" aria-labelledby="pacing-guide-title">
+      <h2 id="pacing-guide-title">Digital SAT pacing guide</h2>
+      <p>An even pace works out to about 71 seconds per Reading and Writing question and 95 seconds per Math question. That average is a checkpoint, not a rule for every question: some questions take less time and leave room for harder ones.</p>
+      <div class="pace-table-wrap">
+        <table class="pace-table">
+          <caption>Approximate even-pace checkpoints for one standard module</caption>
+          <thead><tr><th scope="col">Module</th><th scope="col">10 minutes elapsed</th><th scope="col">20 minutes elapsed</th><th scope="col">30 minutes elapsed</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Reading and Writing</th><td>Start question 9</td><td>Start question 17</td><td>Start question 26</td></tr>
+            <tr><th scope="row">Math</th><td>Start question 7</td><td>Start question 13</td><td>Start question 19</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <h3>How to practice with the timer</h3>
+      <ol>
+        <li>Choose the section that matches your practice module and start both together.</li>
+        <li>Update “Question you are on” at a checkpoint instead of after every question.</li>
+        <li>If you are behind, flag the current problem, make your best choice, and protect time for the remaining questions.</li>
+        <li>After the module, review why you lost time. Use <a href="/">the strategy deck</a> or <a href="/quiz.html">active-recall quiz</a> to practice that skill.</li>
+      </ol>
+      <p class="source-note">Timing and navigation facts: <a href="https://satsuite.collegeboard.org/sat-school-day/taking-the-test/structure" rel="noopener">College Board SAT structure</a> and <a href="https://bluebook.collegeboard.org/help-center/how-does-timing-work-bluebook" rel="noopener">Bluebook timing help</a>. Students approved for accommodations may have different timing.</p>
+    </section>
+
     <div class="tool-panel">
       <div class="field">
         <label for="qnum">Question you are on</label>
@@ -149,7 +173,7 @@
       <h2>Frequently asked questions</h2>
       <details>
         <summary>How much time do you get per question on the Digital SAT?</summary>
-        <p>About 71 seconds per question in Reading and Writing (32 minutes for 27 questions) and about 95 seconds per question in Math (35 minutes for 22 questions). The timer uses these rates to show which question you should be on.</p>
+        <p>About 71 seconds per question in Reading and Writing (32 minutes for 27 questions) and about 95 seconds per question in Math (35 minutes for 22 questions). These are section-wide averages, so individual questions can take more or less time.</p>
       </details>
       <details>
         <summary>How is the Digital SAT timed?</summary>
@@ -158,6 +182,10 @@
       <details>
         <summary>Can I move back and forth between questions?</summary>
         <p>Yes. Within a module you can flag questions and return to them before that module's time runs out. This timer covers one module at a time.</p>
+      </details>
+      <details>
+        <summary>Should I use this timer on the real SAT?</summary>
+        <p>No. Use it only for independent practice. During the real SAT, Bluebook displays the official countdown and moves you between separately timed modules.</p>
       </details>
     </section>
     <p class="disclaimer">

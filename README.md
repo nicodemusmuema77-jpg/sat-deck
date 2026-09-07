@@ -38,7 +38,8 @@ The data pipeline scripts are kept outside this directory (in `../scripts/`) so 
 - **Source link** on every card jumps to the YouTube video at the relevant timestamp.
 - **Export / Import** your progress as JSON so it survives a browser reset.
 - **Light / dark theme** with auto-detect; toggle persists.
-- **No tracking, no analytics, no external requests at runtime.**
+- No analytics or behavioral tracking is installed. The deployed site may load
+  Google AdSense when its advertising flag is enabled; see the privacy page.
 
 ## Local development
 
