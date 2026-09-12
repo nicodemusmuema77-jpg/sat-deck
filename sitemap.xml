@@ -25,6 +25,18 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://strategy.nicxon.tech/guides.html</loc>
+    <lastmod>2026-09-12</lastmod>
+  </url>
+  <url>
+    <loc>https://strategy.nicxon.tech/sat-grammar-rules.html</loc>
+    <lastmod>2026-09-12</lastmod>
+  </url>
+  <url>
+    <loc>https://strategy.nicxon.tech/sat-math-desmos-guide.html</loc>
+    <lastmod>2026-09-12</lastmod>
+  </url>
+  <url>
     <loc>https://strategy.nicxon.tech/study-plan.html</loc>
     <lastmod>2026-08-29</lastmod>
     <changefreq>monthly</changefreq>
